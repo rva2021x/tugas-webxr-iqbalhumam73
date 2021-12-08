@@ -2,6 +2,7 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+    <script src="https://codechangers.com/physics.js"></script>
   </head>
   <body>
     <a-scene id="myScene">
@@ -49,6 +50,7 @@
       ></a-box>
       <!-- lapangan -->
       <a-plane
+        static-body
         id="court"
         src="#court"
         position="0 0 -4"
