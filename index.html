@@ -6,61 +6,30 @@
   </head>
   <body>
     <a-scene id="myScene">
-        <a-camera>
+        <a-camera id="myCamera" position="0 0 0">
             <a-cursor></a-cursor>
         </a-camera>
         <a-asset>
             <img src="textures/court.png" id="court">
             <img src="textures/backboard.png" id="backboard">
         </a-asset>
-    <!-- tiang ring basket -->
-      <a-box
-        position="13.5 1.5 -4"
-        scale="0.15 4 0.15"
-        rotation="0 0 0"
-        color="#016B5F"
-      ></a-box>
-      <a-box
-        position="13 3.5 -4"
-        scale="1.15 0.15 0.15"
-        rotation="0 0 0"
-        color="#016B5F"
-      ></a-box>
-      <!-- backboard ring basket -->
-      <a-box
-        id="backboard"
-        src="#backboard"
-        position="12.5 3.5 -4"
-        scale="2 1.3 0.15"
-        rotation="0 90 0"
-      ></a-box>
-      <!-- ring basket -->
-      <a-ring
-        radius-inner="0.41"
-        radius-outer="0.45"
-        rotation="90 0 0"
-        position="11.8 3.2 -4"
-        color="red"
-      ></a-ring>
-      <a-box
-        position="12.4 3.2 -4"
-        scale="0.2 0.1 0.3"
-        rotation="0 90 0"
-        color="red"
-      ></a-box>
-      <!-- lapangan -->
-      <a-plane
-        static-body
-        id="court"
-        src="#court"
-        position="0 0 -4"
-        rotation="-90 0 0"
-        width="28"
-        height="15"
-      ></a-plane>
-      <a-sky
-        color="#ECECEC"
-      ></a-sky>
+    
+    <a-entity class="shooter-box">
+        <!-- tiang ring basket -->
+        <a-box position="13.5 1.5 -4" scale="0.15 4 0.15"  rotation="0 0 0"  color="#016B5F"></a-box>
+        <a-box position="13.001 3.5 -4" scale="1.15 0.15 0.15" rotation="0 0 0" color="#016B5F"></a-box>
+        <!-- backboard ring basket -->
+        <a-box id="backboard" src="#backboard" position="12.5 3.5 -4" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
+        <!-- ring basket -->
+        <!-- <a-ring radius-inner="0.41" radius-outer="0.45" rotation="90 0 0" position="11.8 3.2 -4" color="red"></a-ring> -->
+        <!-- Ring -->
+        <a-entity id="ring" src="#court" geometry="primitive: torus; radius: 0.45; radiusTubular: 0.02; arc: 360; segmentsRadial:100; segmentsTubular:100" rotation="90 0 0" position="11.8 3.2 -4"></a-entity>
+        <a-torus color="red" radius="0.45" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.8 3.2 -4"></a-torus>
+        <a-box position="12.4 3.2 -4" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
+        <!-- lapangan -->
+        <a-plane static-body id="court" src="#court" position="0 0 -4" rotation="-90 0 0" width="28" height="15" ></a-plane>
+    </a-entity>
+      <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
 </html>
