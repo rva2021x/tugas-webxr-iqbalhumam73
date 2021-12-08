@@ -9,16 +9,17 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <!-- extra JS Library for event listener / interaction-->
     <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
   </head>
   <body>
-    <a-scene id="myScene">
-        <a-camera id="myCamera" position="0 1 0" look-controls position="0 1.6 0">
+    <a-scene id="myScene" physics="debug:true">
+        <a-camera id="myCamera" position="0 1.7 0">
             <a-cursor></a-cursor>
         </a-camera>
-
         <a-asset>
             <img src="textures/court.png" id="court">
             <img src="textures/backboard.png" id="backboard">
+            <img src="textures/ball.jpg" id="ball">
         </a-asset>
     
         <a-entity class="shooter-box">
@@ -38,41 +39,13 @@
             <!-- <a-plane color="#000000" position="0 1 -4" scale="28 15 1" rotation="90 0 0"></a-plane> -->
         </a-entity>
 
-        <!-- Sphere wireframe -->
-        <a-sphere id="yellowsphere" color="yellow" radius="0.5" position="1 1.5 -3" wireframe="1"
-        animation="
-            property: position;
-            from: 1 0.25 -3;
-            to: 1 4 -3;
-            dur: 500;
-            loop: true;
-            dir: alternate;
-            easing: easeOutCubic;
-        "
-        animation__rotation="
-            property: rotation;
-            to: 100 200 150;
-            dur: 10000;
-            loop: true;
-        "
-        ></a-sphere>
-        <a-sphere id="yellowsphere" color="yellow" radius="0.24" position="1 1.5 -3"
-        animation="
-            property: position;
-            from: 1 0.25 -3;
-            to: 1 4 -3;
-            dur: 500;
-            loop: true;
-            dir: alternate;
-            easing: easeOutCubic;
-        "
-        animation__rotation="
-            property: rotation;
-            to: 100 200 150;
-            dur: 10000;
-            loop: true;
-        "
-        ></a-sphere>
+        <a-entity id="ballentity">
+            <a-sphere dynamic-body src="#ball" repeat="2 2" radius="0.24" position="1 1.5 -3"
+            ></a-sphere>
+        </a-entity>
+        
+        
+        
         <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>

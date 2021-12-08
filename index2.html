@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Ball</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    
+    
+  </head>
+  <body>
+      <a-scene physics="gravity: 9.8">
+          <a-plane static-body color="#222" rotation="-90 0 0" scale="15 15 15"> </a-plane>
+          <a-box dynamic-body color="#F00" position="0 1.5 3"></a-box>
+      </a-scene>
+  </body>
