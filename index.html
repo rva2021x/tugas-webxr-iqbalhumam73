@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Scene</title>
     <script src="https://codechangers.com/physics.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- extra JS Library for event listener / interaction-->
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
   </head>
   <body>
     <a-scene id="myScene">
-        <a-camera id="myCamera" position="0 0 0">
+        <a-camera id="myCamera" position="0 1 0" look-controls position="0 1.6 0">
             <a-cursor></a-cursor>
         </a-camera>
+
         <a-asset>
             <img src="textures/court.png" id="court">
             <img src="textures/backboard.png" id="backboard">
         </a-asset>
     
-    <a-entity class="shooter-box">
-        <!-- tiang ring basket -->
-        <a-box position="13.5 1.5 -4" scale="0.15 4 0.15"  rotation="0 0 0"  color="#016B5F"></a-box>
-        <a-box position="13.001 3.5 -4" scale="1.15 0.15 0.15" rotation="0 0 0" color="#016B5F"></a-box>
-        <!-- backboard ring basket -->
-        <a-box id="backboard" src="#backboard" position="12.5 3.5 -4" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
-        <!-- ring basket -->
-        <!-- <a-ring radius-inner="0.41" radius-outer="0.45" rotation="90 0 0" position="11.8 3.2 -4" color="red"></a-ring> -->
-        <!-- Ring -->
-        <a-entity id="ring" src="#court" geometry="primitive: torus; radius: 0.45; radiusTubular: 0.02; arc: 360; segmentsRadial:100; segmentsTubular:100" rotation="90 0 0" position="11.8 3.2 -4"></a-entity>
-        <a-torus color="red" radius="0.45" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.8 3.2 -4"></a-torus>
-        <a-box position="12.4 3.2 -4" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
-        <!-- lapangan -->
-        <a-plane static-body id="court" src="#court" position="0 0 -4" rotation="-90 0 0" width="28" height="15" ></a-plane>
-    </a-entity>
-      <a-sky color="#ECECEC"></a-sky>
+        <a-entity class="shooter-box">
+            <!-- tiang ring basket -->
+            <a-box position="13.5 1.5 -4" scale="0.15 4 0.15"  rotation="0 0 0"  color="#016B5F"></a-box>
+            <a-box position="13.001 3.5 -4" scale="1.15 0.15 0.15" rotation="0 0 0" color="#016B5F"></a-box>
+            <!-- backboard ring basket -->
+            <a-box id="backboard" src="#backboard" position="12.5 3.5 -4" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
+            <!-- ring basket -->
+            <!-- <a-ring radius-inner="0.41" radius-outer="0.45" rotation="90 0 0" position="11.8 3.2 -4" color="red"></a-ring> -->
+            <!-- Ring -->
+            <a-entity id="ring" src="#court" geometry="primitive: torus; radius: 0.45; radiusTubular: 0.02; arc: 360; segmentsRadial:100; segmentsTubular:100" rotation="90 0 0" position="11.8 3.2 -4"></a-entity>
+            <a-torus color="red" radius="0.45" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.8 3.2 -4"></a-torus>
+            <a-box position="12.4 3.2 -4" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
+            <!-- lapangan -->
+            <a-plane id="court" src="#court" position="0 0 -4" rotation="-90 0 0" width="28" height="15" ></a-plane>
+            <!-- <a-plane color="#000000" position="0 1 -4" scale="28 15 1" rotation="90 0 0"></a-plane> -->
+        </a-entity>
+
+        <!-- Sphere wireframe -->
+        <a-sphere id="yellowsphere" color="yellow" radius="0.5" position="1 1.5 -3" wireframe="1"
+        animation="
+            property: position;
+            from: 1 0.25 -3;
+            to: 1 4 -3;
+            dur: 500;
+            loop: true;
+            dir: alternate;
+            easing: easeOutCubic;
+        "
+        animation__rotation="
+            property: rotation;
+            to: 100 200 150;
+            dur: 10000;
+            loop: true;
+        "
+        ></a-sphere>
+        <a-sphere id="yellowsphere" color="yellow" radius="0.24" position="1 1.5 -3"
+        animation="
+            property: position;
+            from: 1 0.25 -3;
+            to: 1 4 -3;
+            dur: 500;
+            loop: true;
+            dir: alternate;
+            easing: easeOutCubic;
+        "
+        animation__rotation="
+            property: rotation;
+            to: 100 200 150;
+            dur: 10000;
+            loop: true;
+        "
+        ></a-sphere>
+        <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
+  <script src="https://codechangers.com/shoot-full.js"></script>
 </html>
