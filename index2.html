@@ -22,9 +22,21 @@
                     let direction = cam_pos.sub(object_position)//ke arah cam
 
                     el.body.applyLocalImpulse(
-                        new CANNON.Vec3(-20 * direction.x, 400 * direction.y, -20 * direction.z), //menjauh dari kamera - (away from camera)
+                        new CANNON.Vec3(-14 * cam_pos.x, 50, -14 * cam_pos.z), //menjauh dari kamera - (away from camera)
                         new CANNON.Vec3().copy(object_position),
                     )
+
+                    let scene = document.querySelector("#myScene");
+                    let newBall = document.createElement("a-sphere");
+
+                    newBall.setAttribute('position', '0 1.5 0');
+                    newBall.setAttribute('radius', '0.24');
+                    newBall.setAttribute('src', '#ball');
+                    newBall.setAttribute('repeat', '2 2');
+                    newBall.setAttribute('dynamic-body', 'shape:sphere;');
+                    newBall.setAttribute('pushableobject', 'shape:sphere;');
+
+                    scene.appendChild(newBall);
                 });
             }
         })
@@ -42,18 +54,18 @@
 
         <a-entity class="shooter-box">
             <!-- tiang ring basket -->
-            <a-box static-body position="13.5 1.5 -4" scale="0.15 4 0.15"  rotation="0 0 0"  color="#016B5F"></a-box>
-            <a-box static-body position="13.001 3.5 -4" scale="1.15 0.15 0.15" rotation="0 0 0" color="#016B5F"></a-box>
+            <a-box static-body position="13.5 1.5 0" scale="0.15 4 0.15"  rotation="0 0 0"  color="#016B5F"></a-box>
+            <a-box static-body position="13.001 3.5 0" scale="1.15 0.15 0.15" rotation="0 0 0" color="#016B5F"></a-box>
             <!-- backboard ring basket -->
-            <a-box static-body id="backboard" src="#backboard" position="12.5 3.5 -4" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
-            <a-box static-body position="12.4 3.2 -4" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
+            <a-box static-body id="backboard" src="#backboard" position="12.5 3.5 0" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
+            <a-box static-body position="12.4 3.2 0" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
             <!-- Ring -->
-            <a-torus static-body  color="red" radius="0.45" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.8 3.2 -4"></a-torus>
+            <a-torus static-body  color="red" radius="0.7" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.6 3.2 0"></a-torus>
             <!-- lapangan -->
-            <a-box static-body id="court" src="#court" position="0 0 -4" scale="28 15 0"  rotation="90 0 0" ></a-box>
+            <a-box static-body id="court" src="#court" position="0 0 0" scale="28 15 0"  rotation="90 0 0" ></a-box>
             <!-- <a-plane static-body id="court" src="#court" position="0 0 -4" rotation="-90 0 0" width="28" height="15" ></a-plane> -->
             <!-- <a-plane color="#000000" position="0 1 -4" scale="28 15 1" rotation="90 0 0"></a-plane> -->
-            <a-sphere pushableobject dynamic-body src="#ball" repeat="2 2" radius="0.24" position="1 1.5 -4"></a-sphere>
+            <a-sphere pushableobject dynamic-body src="#ball" repeat="2 2" radius="0.24" position="0 1.5 0"></a-sphere>
         </a-entity>
         <a-sky color="#ECECEC"></a-sky>
     </a-scene>
