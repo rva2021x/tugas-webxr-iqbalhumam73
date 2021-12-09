@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.7.1/aframe.min.js"></script>
+    <script src="https://codechangers.com/physics.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+  </head>
+  <body>
+    <script>
+        AFRAME.registerComponent('pushableobject',{
+            init : function() {
+                let el = this.el;
+                el.addEventListener('click', function(){
+                    console.log("mantap")
+
+                    let position = el.getAttribute('position');
+                    let object_position = new THREE.Vector3(position.x, position.y, position.z)
+
+                    let position_cam = document.querySelector("#myCamera").getAttribute('position');
+                    let cam_pos = new THREE.Vector3(position_cam.x, position_cam.y, position_cam.z);
+
+                    let direction = cam_pos.sub(object_position)//ke arah cam
+
+                    el.body.applyLocalImpulse(
+                        new CANNON.Vec3(-20 * direction.x, 400 * direction.y, -20 * direction.z), //menjauh dari kamera - (away from camera)
+                        new CANNON.Vec3().copy(object_position),
+                    )
+                });
+            }
+        })
+    </script>
+    <a-scene id="myScene">
+        <a-camera id="myCamera">
+            <a-cursor intersection-spawn="Event: Click; mixin:voxel;"></a-cursor>
+        </a-camera>
+
+        <a-asset>
+            <img src="textures/court.png" id="court">
+            <img src="textures/backboard.png" id="backboard">
+            <img src="textures/ball.jpg" id="ball">
+        </a-asset>
+
+        <a-entity class="shooter-box">
+            <!-- tiang ring basket -->
+            <a-box static-body position="13.5 1.5 -4" scale="0.15 4 0.15"  rotation="0 0 0"  color="#016B5F"></a-box>
+            <a-box static-body position="13.001 3.5 -4" scale="1.15 0.15 0.15" rotation="0 0 0" color="#016B5F"></a-box>
+            <!-- backboard ring basket -->
+            <a-box static-body id="backboard" src="#backboard" position="12.5 3.5 -4" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
+            <a-box static-body position="12.4 3.2 -4" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
+            <!-- Ring -->
+            <a-torus static-body  color="red" radius="0.45" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.8 3.2 -4"></a-torus>
+            <!-- lapangan -->
+            <a-box static-body id="court" src="#court" position="0 0 -4" scale="28 15 0"  rotation="90 0 0" ></a-box>
+            <!-- <a-plane static-body id="court" src="#court" position="0 0 -4" rotation="-90 0 0" width="28" height="15" ></a-plane> -->
+            <!-- <a-plane color="#000000" position="0 1 -4" scale="28 15 1" rotation="90 0 0"></a-plane> -->
+            <a-sphere pushableobject dynamic-body src="#ball" repeat="2 2" radius="0.24" position="1 1.5 -4"></a-sphere>
+        </a-entity>
+        <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+    <script src="https://codechangers.com/shoot-full.js"></script>
+  </body>
+  
