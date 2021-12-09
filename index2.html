@@ -22,7 +22,7 @@
                     let direction = cam_pos.sub(object_position)//ke arah cam
 
                     el.body.applyLocalImpulse(
-                        new CANNON.Vec3(-14 * cam_pos.x, 50, -14 * cam_pos.z), //menjauh dari kamera - (away from camera)
+                        new CANNON.Vec3(-10 * cam_pos.x, 50, -10 * cam_pos.z), //menjauh dari kamera - (away from camera)
                         new CANNON.Vec3().copy(object_position),
                     )
 
@@ -60,7 +60,22 @@
             <a-box static-body id="backboard" src="#backboard" position="12.5 3.5 0" scale="2 1.3 0.15" rotation="0 90 0"></a-box>
             <a-box static-body position="12.4 3.2 0" scale="0.2 0.1 0.3" rotation="0 90 0" color="red"></a-box>
             <!-- Ring -->
-            <a-torus static-body  color="red" radius="0.7" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.6 3.2 0"></a-torus>
+            <!-- <a-ring color="teal" radius-inner="1" radius-outer="2" position="11.6 3.2 0"></a-ring> -->
+            <a-ring static-body color="red" radius-inner="0.68" radius-outer="0.7" rotation="90 0 0" position="11.6 3.2 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.67" radius-outer="0.69" rotation="90 0 0" position="11.6 3.15 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.66" radius-outer="0.68" rotation="90 0 0" position="11.6 3.1 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.65" radius-outer="0.67" rotation="90 0 0" position="11.6 3.05 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.64" radius-outer="0.66" rotation="90 0 0" position="11.6 3.0 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.63" radius-outer="0.65" rotation="90 0 0" position="11.6 2.95 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.62" radius-outer="0.64" rotation="90 0 0" position="11.6 2.90 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.61" radius-outer="0.63" rotation="90 0 0" position="11.6 2.85 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.6" radius-outer="0.62" rotation="90 0 0" position="11.6 2.80 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.59" radius-outer="0.61" rotation="90 0 0" position="11.6 2.75 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.58" radius-outer="0.6" rotation="90 0 0" position="11.6 2.70 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.57" radius-outer="0.59" rotation="90 0 0" position="11.6 2.65 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.56" radius-outer="0.58" rotation="90 0 0" position="11.6 2.60 0"></a-ring>
+            <a-ring static-body color="red" radius-inner="0.55" radius-outer="0.57" rotation="90 0 0" position="11.6 2.55 0"></a-ring>
+            <!-- <a-torus static-body  color="red" radius="1.8" radius-tubular="0.02" segments-radial="100" segments-tubular="100" rotation="90 0 0" position="11.6 3.2 0"></a-torus> -->
             <!-- lapangan -->
             <a-box static-body id="court" src="#court" position="0 0 0" scale="28 15 0"  rotation="90 0 0" ></a-box>
             <!-- <a-plane static-body id="court" src="#court" position="0 0 -4" rotation="-90 0 0" width="28" height="15" ></a-plane> -->
